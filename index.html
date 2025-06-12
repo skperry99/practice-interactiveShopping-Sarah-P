@@ -5,29 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shopping List</title>
     <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap"
+      rel="stylesheet"
+    />
     <script src="script.js" defer></script>
   </head>
   <body>
-    <div id="page-container">
+    <div class="container">
       <header>
         <h1>Shopping List</h1>
       </header>
       <main>
-        <form>
-          <label for="new-item">New Item: </label>
+        <div id="add-item-container">
           <!-- An input field for entering new items -->
-          <input type="text" id="new-item" name="new-item" />
-
+          <input
+            type="text"
+            placeholder="New Item"
+            id="new-item"
+            name="new-item"
+          />
           <!-- A button to add items to the list -->
-          <input type="button" value="Add" id="add-button" />
-        </form>
+          <button id="add-button"><i class="fa-solid fa-plus"></i></button>
+        </div>
 
-        <ul id="list">
-          <!-- <li class="list-items">Apple
+        <div id="list-container">
+          <!-- <ul id="list"> -->
+            <!-- <li class="list-items">Apple
             <button class="edit-button">Edit</button>
             <button class="delete-button">Delete</button>
           </li> -->
-        </ul>
+          <!-- </ul> -->
+        </div>
       </main>
     </div>
   </body>

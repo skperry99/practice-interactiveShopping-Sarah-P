@@ -1,10 +1,122 @@
-/* 
-body
-page-container div
-header
-h1
-main
-form
-ul
-li
-*/
+* {
+    margin: 10px;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Shadows Into Light', cursive;
+}
+
+body {
+    height: 100vh;
+    background: url(img/veggies.jpg) no-repeat center center/ cover;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#add-item-container {
+    width: 100%;
+    padding: 10px 10px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 3px;
+    margin-bottom: 20px;
+    display: flex;
+}
+
+input {
+    flex: 5;
+    margin-right: 1px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    padding: 5px;
+}
+
+#add-button {
+    flex: 1;
+    transition: .3s;
+
+    font-size: 1.3rem;
+    padding: 5px;
+
+    background-color: #fff;
+    color: green;
+
+    border: green solid 2px;
+    border-radius: 10px;
+}
+
+#add-button:hover {
+    background-color: green;
+    color: #fff;
+
+}
+
+.item {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 3px;
+    padding: 5px;
+    margin-bottom: 5px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.item li {
+    list-style-type: none;
+    flex: 4;
+    padding: 10px;
+    font-size: 1.3rem;
+    margin: 10px;
+    text-transform: capitalize;
+}
+
+.item button {
+    flex: 1;
+    border-radius: 10px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.item .edit-button {
+    color: orange;
+    margin-right: 5px;
+    border: solid 2px orange;
+    font-size: 1.3rem;
+}
+
+.item .edit-button:hover {
+    background-color: orange;
+    color: #fff;
+}
+
+.item .save-button {
+    color: blue;
+    margin-right: 5px;
+    border: solid 2px blue;
+    font-size: 1.3rem;
+}
+
+.item .save-button:hover {
+    background-color: blue;
+    color: #fff;
+}
+
+.item .delete-button {
+    color: red;
+    border: solid 2px red;
+    font-size: 1.3rem;
+}
+
+.item .delete-button:hover {
+    background-color: red;
+    color: #fff;
+}
+
+h1 {
+    font-size: 6vh;
+    text-align: center;
+    text-transform: uppercase;
+}

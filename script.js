@@ -32,62 +32,73 @@ text.
 and revert the button back to "Edit".
 */
 
-const h1 = document.getElementsByName("h1");
-const body = document.getElementsByName("body");
 const newItem = document.getElementById("new-item");
 const addButton = document.getElementById("add-button");
-const ul = document.querySelector("ul");
-const listItems = document.getElementsByClassName(".list-items");
+const addItemContainer = document.getElementById("add-item-container");
+const listContainer = document.getElementById("list-container");
 
-
-// TODO - add input verification 
-// confirmation of added item?
+// Event listener to add items to list
 addButton.addEventListener("click", function () {
-  // Add items to list
-  const li = document.createElement("li");
-  li.innerText = newItem.value;
-  li.classList.add("list-items");
+  let item = document.createElement("div");
+  item.classList.add("item");
 
-  const editButton = document.createElement("button");
+  let li = document.createElement("li");
+  li.innerText = `${newItem.value}`;
+  li.classList.add("list-item");
+  item.appendChild(li);
+
+  let editButton = document.createElement("button");
   editButton.textContent = "Edit";
+  // editButton.innerHTML = '<i class="fa-solid fa-check"></i>';
   editButton.classList.add("edit-button");
+  item.appendChild(editButton);
 
-  li.appendChild(editButton);
-
-  const deleteButton = document.createElement("button");
-  deleteButton.textContent = "Delete";
+  let deleteButton = document.createElement("button");
+  deleteButton.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
   deleteButton.classList.add("delete-button");
+  item.appendChild(deleteButton);
 
-  li.appendChild(deleteButton);
-
-  ul.append(li);
-  ul.appendChild(li);
-
+  // Check if input is empty
+  if (newItem.value === "") {
+    alert("Please enter an item");
+  } else {
+    listContainer.appendChild(item);
+  }
+  // Reset input box
   newItem.value = "";
-});
 
-const list = document.getElementById("list");
+  editButton.addEventListener("click", function () {
+    if(editButton.classList.contains('edit-button')) {
+      editButton.classList.remove('edit-button');
+      editButton.classList.add('save-button');
+      editButton.textContent = "Save";
+      // editButton.innerHTML = '<i class="fa-solid fa-floppy-disk"></i>';
+      let editItem = document.createElement("input");
+      editItem.type = "text";
+      editItem.id = "edit-item";
+      editItem.value = li.textContent;
+      this.parentElement.replaceChild(editItem, li);
 
-// Remove item
-list.addEventListener("click", function(event) {
-  const target = event.target;
+    } else {
+      editButton.classList.remove('save-button');
+      editButton.classList.add('edit-button');
+      editButton.textContent = "Edit";
+      editedItem = document.getElementById("edit-item");
+      li = document.createElement("li");
+      li.innerText = editedItem.value;
+      this.parentElement.replaceChild(li, editedItem);
+    };
+  });
 
-  // Check if the clicked element has the class "delete-button"
-  if (target.classList.contains("delete-button")) {
+  // Remove item
+  deleteButton.addEventListener("click", function (event) {
+    let target = event.target;
     let confirmed = confirm("Are you sure you want to delete this item?");
     if (confirmed) {
-      target.parentNode.remove();
+      target.parentElement.parentElement.remove();
       console.log("Item deleted!"); //use alert?
     } else {
       console.log("Deletion cancelled."); //use alert?
-    }    
-  } else if (target.classList.contains("edit-button")) {
-// Replace the item text with an input field containing the current
-// text.
-
-// Change the "Edit" button to a "Save" button.
-
-// When "Save" is clicked, update the text with the new input value
-// and revert the button back to "Edit".
-  }
+    }
+  });
 });
